@@ -7,6 +7,20 @@
     <script defer src = "main.js"></script>
 </head>
 <body>
-    
+    <h1>Calculate Your Carbon Footprint</h1>
+    <label for="household">Enter the number of people in your household </label>
+    <input type="number" min="0" max="10" name="household" id="household"> 
+    <span id="householdPts"></span>
+    <br>
+    <label for="homeSize">Select the general size of your home</label>
+    <select id="homeSize">
+        <option value="">--Please select one--</option>
+        <option value="large">large</option>
+        <option value="medium">medium</option>
+        <option value="small">small</option>
+        <option value="apartment">aparment</option>
+    </select>
+    <span id="homeSizePts"></span>
+    <h2 id="totalCF">Make selections to see how they effect your score</h2>
 </body>
 </html>
