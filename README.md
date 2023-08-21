@@ -11,5 +11,5 @@ Here is
 My [Carbon Footprint](https://cit93.github.io/marke-pub/w2)
 
 #### Week 3
-Working Code. If you have any questions. I would be happy to try to answer them.
+Working Code. If you have any questions I would be happy to try to answer them.
 [Carbon Footprint and functions](https://cit93.github.io/marke-pub/w3)
