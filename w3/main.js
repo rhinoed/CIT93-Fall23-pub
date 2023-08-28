@@ -73,7 +73,7 @@ function calculateCFHomeSizePts(sizeOfHome) {
 function updatePtsFor(elementId) {
 	switch (elementId) {
 		case "household":
-			const householdPts = calculateCFHouseholdPts(housholdSelector.value);
+			const householdPts = calculateCFHouseholdPts(householdSelector.value);
 			if (householdPts != 0) {
 				document.querySelector(
 					"#householdPts"
@@ -92,7 +92,7 @@ function updatePtsFor(elementId) {
 			}
 	}
 	totalCFPts = calculateCarbonFootprintPts(
-		housholdSelector.value,
+		householdSelector.value,
 		homeSizeSelector.value
 	);
 	if (totalCFPts != 0) {
@@ -110,7 +110,7 @@ note:
 I am most familar with using document.getElementById. 
 But using the MDN docs I was able to find a way to use querySelector
 */
-const housholdSelector = document.querySelector("#household");
+const householdSelector = document.querySelector("#household");
 const homeSizeSelector = document.querySelector("#homeSize");
 const totalCFHeading = document.querySelector("#totalCF");
 const initialCFHeading = "Make selections to see how they effect your score";
@@ -133,5 +133,5 @@ const homeSizeSelectorChanged = function () {
 };
 // DOM manipulation
 //create event listeners passing the references to anonymous functions which are executed when changes are made to these elements
-housholdSelector.addEventListener("change", householdSelectorChanged, false);
+householdSelector.addEventListener("change", householdSelectorChanged, false);
 homeSizeSelector.addEventListener("change", homeSizeSelectorChanged, false);
