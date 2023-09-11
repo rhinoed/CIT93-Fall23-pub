@@ -6,7 +6,8 @@
 // top-level const
 const FORM = document.getElementById("form");
 const cfpData = [];
-// functions
+
+// ##################	Calculation related functions	##################
 // this fuction is call easch time the user changes their selection
 function calculateCarbonFootprintPts(numberInHoushold, sizeOfHome) {
 	return (
@@ -52,6 +53,7 @@ function calculateCFHomeSizePts(sizeOfHome) {
 			return 0;
 	}
 }
+// ###################	Event handler functions	###################
 // This updates the points the points shown next to the input boxes.
 function householdSelectorChanged() {
 	const householdPts = calculateCFHouseholdPts(parseInt(this.value));
@@ -65,7 +67,7 @@ function householdSelectorChanged() {
 	} else {
 		document.querySelector("#householdPts").textContent = null;
 	}
-	prepareToStart();
+	toggleSubmitButton();
 }
 // changes the homeSize span text content
 function homeSizeSelectorChanged() {
@@ -81,44 +83,47 @@ function homeSizeSelectorChanged() {
 		document.querySelector("#homeSizePts").textContent = null;
 	}
 
-	prepareToStart();
+	toggleSubmitButton();
+}
+// this function is called when the form is submitted
+function submit(event) {
+	event.preventDefault();
+	cfpData.unshift(
+		new cfpObjConstrutor(
+			this.firstname.value,
+			this.lastname.value,
+			this.household.value,
+			this.homesize.value
+		)
+	);
+	displayOutput();
+	// reset form & points
+	this.reset();
+	toggleSubmitButton();
 }
 
-function prepareToStart() {
+// ###################	DOM manipulation  ###################
+// this function enables and disables the submit button based on if the user has filled out all the fields
+function toggleSubmitButton() {
+	// create reference to the form
+	const form = document.getElementsByClassName("userinput");
 	const totalCFHeading = document.querySelector("#totalCF");
-	const householdSelectorValue = document.querySelector("#household").value;
-	const homeSizeSelectorValue = document.querySelector("#homesize").value;
-	const totalCFPts = calculateCarbonFootprintPts(
-		parseInt(householdSelectorValue),
-		homeSizeSelectorValue
-	);
-	// added this so result only update when both inputs have a value
-	if (householdSelectorValue != "" && homeSizeSelectorValue != "") {
-		
-		//start(householdSelectorValue, homeSizeSelectorValue);
-		totalCFHeading.textContent = "Use Submit button to see results";
-	} else if (householdSelectorValue == "" || homeSizeSelectorValue == "") {
-		totalCFHeading.textContent = `Make selection for both to see results below your score so far is ${totalCFPts}`;
+	const inputValues = [];
+	for (element of form) {
+		inputValues.push(element.value);
+	}
+	// check to see if inputValues contains empty strings
+	if (inputValues.includes("")) {
+		totalCFHeading.textContent = "All fields must be filled out to submit";
+		document.getElementById("submit").setAttribute("disabled", "disabled");
+		document.getElementById("submit").setAttribute("class", "button disabled");
 	} else {
-		totalCFHeading.textContent =
-			"Make selections to see how they effect your score";
+		document.getElementById("submit").removeAttribute("disabled");
+		document.getElementById("submit").setAttribute("class", "button");
+		totalCFHeading.textContent = "Click submit to see your results";
 	}
 }
-
-// DOM manipulation
-function addListener(element, event, func) {
-	//create event listeners passing the functions which are executed when changes are made to these elements
-	element.addEventListener(event, func);
-}
-
-function start(obj) {
-
-	// used unshift instead of push so the newest array appears first
-	cfpData.unshift(obj);
-	displayOutput();
-}
-
-// week 5 code along refactor (function using cfpData array)
+// output to the page
 function displayOutput() {
 	const output = document.getElementById("output");
 	const newParagraph = document.createElement("p");
@@ -129,33 +134,32 @@ function displayOutput() {
 		"Your home size points are:",
 		"Your total carbon footprint is:",
 	];
-	
-	// week 5 refactor to standard for loop (outer loop) && to use objects
+
+	// week 6 refactor using form submission
 	for (object of cfpData) {
 		// counter for inner loop
-		let j = 0
+		let j = 0;
 		const result_list = document.createElement("ul");
 		const userHeader = document.createElement("h4");
 		result_list.className = "result_list";
 		// week 6 refactor using form submission
-		for (key in object ) {
+		for (key in object) {
 			let newElement;
-			if (key == "cfpTotal"){
+			if (key == "cfpTotal") {
 				newElement = document.createElement("li");
 				newElement.textContent = `${outputLabels[j]} ${object.cfpTotal()}`;
 				result_list.appendChild(newElement);
 				j++;
-			}else if(key == "user"){
+			} else if (key == "user") {
 				userHeader.textContent = `${object.user}`;
 				newElement = document.createElement("li");
-			}else{
+			} else {
 				newElement = document.createElement("li");
 				newElement.textContent = `${outputLabels[j]} ${object[key]}`;
 				result_list.appendChild(newElement);
 				j++;
 			}
 			result_list.appendChild(newElement);
-			
 		}
 		newParagraph.appendChild(userHeader);
 		newParagraph.appendChild(result_list);
@@ -163,9 +167,12 @@ function displayOutput() {
 	// used replaceChildren because I call displayOut everytime start is called
 	output.replaceChildren(newParagraph);
 	document.getElementById("totalCF").textContent = "";
+	document.getElementById("householdPts").textContent = "";
+	document.getElementById("homeSizePts").textContent = "";
 }
-// object constructor
-function cfpObjConstrutor(firstName,lastName,household,homeSize){
+
+// ################### object constructor ###################
+function cfpObjConstrutor(firstName, lastName, household, homeSize) {
 	// object properties
 	this.user = `${firstName} ${lastName}`;
 	// Number() also converts the string to a number, but I used parseInt() because it is more specific.
@@ -175,14 +182,18 @@ function cfpObjConstrutor(firstName,lastName,household,homeSize){
 	this.homeSizePts = calculateCFHomeSizePts(this.homeSize);
 
 	// object methods
-	this.cfpTotal = function(){
-		return this.householdPts + this.homeSizePts
-	}
+	this.cfpTotal = function () {
+		return this.householdPts + this.homeSizePts;
+	};
+}
+// ################### event listener function ###################
+function addListener(element, event, func) {
+	//create event listeners passing the functions which are executed when changes are made to these elements
+	element.addEventListener(event, func);
 }
 
-
-// add event listener
-
+// add event listeners
+addListener(document.getElementById("form"), "submit", submit);
 addListener(
 	document.querySelector("#household"),
 	"change",
@@ -193,20 +204,3 @@ addListener(
 	"change",
 	homeSizeSelectorChanged
 );
-
-
-// ######################################## week 6 code along ########################################
-// week 6 code along forms: The required attribute provide basic input validation by preventing submission if field is blank.
-FORM.addEventListener("submit",function(e){
-	e.preventDefault();
-	const firstName = this.firstname.value;
-	const lastName = this.lastname.value;
-	const household = this.household.value;
-	const homeSize = this.homesize.value;
-	start(new cfpObjConstrutor(firstName,lastName,household,homeSize));
-	this.reset();
-	document.getElementById("householdPts").textContent = "";
-	document.getElementById("homeSizePts").textContent = "";
-	console.log(firstName);
-	console.log(lastName);
-});
