@@ -20,3 +20,8 @@ Working code updated the DOM [Intro To Iteration](https://cit93.github.io/marke-
 #### Week 5
 
 Iteration and Intro to Objects [Object for loop](https://cit93.github.io/marke-pub/w5/)
+
+
+#### Week 6
+
+Forms and Data Validation [Name and Carbon Footprint Output](https://cit93.github.io/marke-pub/w6/)
