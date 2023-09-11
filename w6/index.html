@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 6 - Carbon Footprint - Public</title>
+    <script defer src="main.js"></script>
+    <style>
+        html {
+            font-size: 22pt;
+        }
+
+        body {
+            color: whitesmoke;
+            background-color: black;
+        }
+
+        ul {
+            font-size: 16pt;
+            font-weight: bold;
+            list-style-type: none;
+            padding: 5px;
+            background-color: dimgrey;
+            color: whitesmoke;
+            text-align: center;
+            border-radius: 25px;
+        }
+
+        form,
+        fieldset {
+            background-color: dimgray;
+            color: whitesmoke;
+            padding: 10pt;
+            border-radius: 25px;
+        }
+        input:in-range{
+            color: black;
+        }
+        input:out-of-range{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Calculate Your Carbon Footprint</h1>
+    <form id="form">
+        <fieldset>
+            <legend>Input Your Data</legend>
+            <div>
+                <label for="firstname">First Name</label>
+                <input type="text" name="firstname" id="firstname" required>
+            </div>
+            <div>
+                <label for="lastname">Last Name</label>
+                <input type="text" name="lastname" id="lastname" required>
+            </div>
+            <div>
+                <label for="household">Number of people in your household </label>
+                <input type="number" min="1" max="10" name="household" id="household" required>
+                <span id="householdPts"></span>
+            </div>
+            <div>
+                <label for="homesize">Size of your home</label>
+                <select id="homesize" name="homesize" required>
+                    <option value="">--Please select one--</option>
+                    <option value="large">large</option>
+                    <option value="medium">medium</option>
+                    <option value="small">small</option>
+                    <option value="apartment">aparment</option>
+                </select>
+                <span id="homeSizePts"></span>
+            </div>
+            <button type="submit" id="submit">Submit</button>
+        </fieldset>
+    </form>
+
+    <br>
+
+    <h2 id="totalCF">Make selections to see how they effect your score</h2>
+    <hr>
+    <h3 style="text-align: center;">Results</h3>
+    <div id="output"></div>
+</body>
+
+</html>
