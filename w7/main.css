@@ -1,0 +1,85 @@
+/*
+CSS for Carbon Foottprint index page
+*/
+
+html {
+    font-size: 22pt;
+}
+
+body {
+    color: whitesmoke;
+    background-color: rgb(8, 8, 8);
+}
+
+ul {
+    font-size: 16pt;
+    font-weight: bold;
+    list-style-type: none;
+    padding: 5px;
+    background-color: dimgrey;
+    color: whitesmoke;
+    text-align: center;
+    border-radius: 25px;
+}
+
+form,
+fieldset {
+    background-color: dimgray;
+    color: whitesmoke;
+    padding: 10pt;
+    border-radius: 25px;
+}
+input:in-range{
+    color: black;
+}
+input:out-of-range{
+    color: red;
+}
+button{
+    margin: 5px 0px 5px 0px;
+    background-color: #3d9f41;
+    font-size: 16px;
+    color: whitesmoke;
+    padding: 12px 28px;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+    
+}
+button:hover{
+    background-color: #27892a; /* Green */
+    color: white;
+}
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+table{
+    
+    padding: 10px;
+    width: 100%;
+    color: whitesmoke;
+    font-size: 18pt;
+    text-align: center;
+    background-color: dimgray;
+    border-radius: 8px;
+}
+
+tr td :nth-child(even){
+    background-color: rgb(179, 16, 16);
+    border-radius: 8px;
+   
+}
+tr td :nth-child(even):hover{
+    background-color: #a21010;
+    color: white;
+}
+thead tr th{
+    border-radius: 8px;
+    background-color: black;
+}
+tbody tr:nth-child(even){
+    background-color: rgba(60, 57, 57, 0.301);
+    
+}

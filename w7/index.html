@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 7 - Carbon Footprint</title>
+    <script type="module" src="main.js"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <h1>Calculate Your Carbon Footprint</h1>
+    <form id="form">
+        <fieldset id="categories">
+            <legend>Input Your Data</legend>
+            <div>
+                <label for="firstname">First Name</label>
+                <input type="text" name="firstname" id="firstname" maxlength="20" class="userinput" required>
+            </div>
+            <div>
+                <label for="lastname">Last Name</label>
+                <input type="text" name="lastname" id="lastname" maxlength="20" class="userinput" required>
+            </div>
+            <div>
+                <label for="household">Number of people in your household </label>
+                <input type="number" min="1" max="10" name="household" id="household" class="userinput" required>
+                <span id="householdPts"></span>
+            </div>
+            <div>
+                <label for="homesize">Size of your home</label>
+                <select id="homesize" name="homesize" class="userinput" required>
+                    <option value="">--Please select one--</option>
+                    <option value="large">large</option>
+                    <option value="medium">medium</option>
+                    <option value="small">small</option>
+                    <option value="apartment">aparment</option>
+                </select>
+                <span id="homeSizePts"></span>
+            </div>
+            <button type="submit" id="submit" class="button disabled" disabled>Submit</button>
+        </fieldset>
+    </form>
+
+    <br>
+    <h2 id="totalCF">Make selections to see how they effect your score</h2>
+    <hr>
+    <h3 style="text-align: center;">Results</h3>
+    <div id="output"></div>
+    <div id="tab-data"></div>
+    <!-- <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Household</th>
+                <th>House Size</th>
+                <th>Carbon Footprint</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Mark Edmunds</td>
+                <td>3</td>
+                <td>medium</td>
+                <td>17</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Mark Edmunds</td>
+                <td>3</td>
+                <td>medium</td>
+                <td>17</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table> -->
+</body>
+
+</html>
