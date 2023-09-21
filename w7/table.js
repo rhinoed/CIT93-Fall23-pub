@@ -88,7 +88,7 @@ function editRow() {
 // delete button functionality
 function deleteRow() {
 	// get the id of the row
-	rowId = parseInt(this.parentNode.parentNode.id.split("row")[1]);
+	const rowId = parseInt(this.parentNode.parentNode.id.split("row")[1]);
 	// remove the object from the array
 	confirm("Do you wish to delete this item?")
 		? cfpData.pop(rowId)
