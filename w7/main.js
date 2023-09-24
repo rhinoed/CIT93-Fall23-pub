@@ -5,8 +5,9 @@
 
 // top-level const
 
-import { renderTable } from "./table.js"
+import { renderTable,editComplete} from "./table.js"
 import { calculateCFHomeSizePts, calculateCFHouseholdPts } from "./calculate.js";
+
 
 const FORM = document.getElementById("form");
 const USERINPUT = document.getElementsByClassName("userinput");
@@ -74,9 +75,11 @@ function toggleSubmitButton() {
 }
 
 // ################### object constructor ###################
-function cfpObjConstrutor(firstName, lastName, household, homeSize) {
+export function cfpObjConstrutor(firstName, lastName, household, homeSize) {
 	// object properties
 	this.id = cfpData.length ;
+	this.firstName = firstName;
+	this.lastName = lastName
 	this.user = `${firstName} ${lastName}`;
 	this.household = parseInt(household);
 	this.homeSize = homeSize;
@@ -106,3 +109,14 @@ addListener(
 	"change",
 	homeSizeSelectorChanged
 );
+
+addListener(
+	document.getElementById("edit-cancel"),
+	"click",
+	editComplete
+)
+addListener(
+	document.getElementById("edit-done"),
+	"click",
+	editComplete
+)

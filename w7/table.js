@@ -1,110 +1,125 @@
-
-import { cfpData } from "./main.js";
+import {cfpData} from "./main.js";
 const TBL = document.getElementById("tab-data");
-//  creates basic table elements
+import {cfpObjConstrutor} from "./main.js";
+// creates basic table elements
 function createTable() {
-	const theadLabels = [
-		"Name",
-		"Household",
-		"House Size",
-		"Carbon Footprint",
-		"Actions",
-	];
-	const table = document.createElement("table");
-	table.setAttribute("id", "cfpTable");
-	const tblHeader = document.createElement("thead");
-	const tblBody = document.createElement("tbody");
-	tblBody.setAttribute("id", "tblBody");
-	const tblRow = document.createElement("tr");
-	theadLabels.forEach(function (label) {
-		const theadData = document.createElement("th");
-		theadData.textContent = label;
-		tblRow.appendChild(theadData);
-	});
-	tblHeader.appendChild(tblRow);
-	table.appendChild(tblHeader);
-	table.appendChild(tblBody);
-	return table;
+    const theadLabels = [
+        "Name",
+        "Household",
+        "House Size",
+        "Carbon Footprint",
+        "Actions",
+    ];
+    const table = document.createElement("table");
+    table.setAttribute("id", "cfpTable");
+    const tblHeader = document.createElement("thead");
+    const tblBody = document.createElement("tbody");
+    tblBody.setAttribute("id", "tblBody");
+    const tblRow = document.createElement("tr");
+    theadLabels.forEach(function (label) {
+        const theadData = document.createElement("th");
+        theadData.textContent = label;
+        tblRow.appendChild(theadData);
+    });
+    tblHeader.appendChild(tblRow);
+    table.appendChild(tblHeader);
+    table.appendChild(tblBody);
+    return table;
 }
 
 // outputs finshed table with data to DOM
-function renderTable() {
-	// create reference to the table
-	const table = createTable();
-	const numCols = table.childNodes[0].childNodes[0].childNodes;
-	const tblBody = table.children[1];
-	cfpData.forEach(function(obj){
-		const tblRow = createRow(obj,numCols);
-		tblBody.appendChild(tblRow);
-	})
+export function renderTable() { // create reference to the table
+    const table = createTable();
+    const tblBody = table.children[1];
+    // this function array replaces the if else statement I had
+    const functionArray = [
+        (obj) => {
+            return obj.user
+        },
+        (obj) => {
+            return obj.household
+        },
+        (obj) => {
+            return obj.homeSize
+        },
+        (obj) => {
+            return obj.cfpTotal()
+        },
+    ];
+    const actionBtnText = ["Edit", "Delete"];
 
-	table.appendChild(tblBody);
-	TBL.replaceChildren(table);
-}
+    cfpData.forEach(function (obj) {
+        const tblRow = document.createElement("tr");
+        for (let func of functionArray) {
+            const tblData = document.createElement("td");
+            tblData.textContent = `${
+                func(obj)
+            }`;
+            tblRow.appendChild(tblData);
+        }
+        const tblData = document.createElement("td");
+		// create buttons
+        for (let text of actionBtnText) {
+            tblData.appendChild(creatActionBtns(text));
+        }
+		// row id userd for deletion
+        tblRow.setAttribute("id", `row${
+            obj.id
+        }`);
+        tblRow.appendChild(tblData);
+        tblBody.appendChild(tblRow);
+    });
 
-// creates table row
-function createRow(obj,cols) {
-	const tblRow = document.createElement("tr");
-	for (const i in cols) {
-		const tblData = document.createElement("td");
-		if (i == 0) {
-			tblData.textContent = obj.user;
-			tblRow.appendChild(tblData);
-		} else if (i == 1) {
-			tblData.textContent = obj.household;
-			tblRow.appendChild(tblData);
-		} else if (i == 2) {
-			tblData.textContent = obj.homeSize;
-			tblRow.appendChild(tblData);
-		} else if (i == 3) {
-			tblData.textContent = `${obj.cfpTotal()}`;
-			tblRow.appendChild(tblData);
-		} else if (i == 4) {
-			const editBtn = creatActionBtns("Edit");
-			tblData.appendChild(editBtn);
-			const deleteBtn = creatActionBtns("Delete");
-			tblData.appendChild(deleteBtn);
-			tblRow.appendChild(tblData);
-		}
-		tblRow.setAttribute("id", `row${obj.id}`);
-	}
-	return tblRow;
+    table.appendChild(tblBody);
+    TBL.replaceChildren(table);
 }
 
 // edit button functionality
 function editRow() {
-	// get the row id
-	const rowId = parseInt(this.parentElement.parentElement.id.split("row")[1]);
-	console.log(cfpData[rowId]);
-	// TODO: get user input for update
-	
-	// TODO: use input to calculate new values for obj
-	cfpData[rowId].household = "5"; // Temporary
-	cfpData[rowId].homeSize = "small"; // Temporary
-	// update table with new values
-	renderTable();
+    const rowId = parseInt(this.parentElement.parentElement.id.split("row")[1]);
+    document.getElementById("edit-done").setAttribute("value", rowId)
+    console.log(rowId)
+    // present modal input dialog for user input
+	const edit = document.getElementById("modal-dialog")
+    edit.style.display = "block"
+    // updating of cfpData occurs in editComplete()
+
 }
 
 // delete button functionality
-function deleteRow() {
-	// get the id of the row
-	const rowId = parseInt(this.parentNode.parentNode.id.split("row")[1]);
-	// remove the object from the array
-	confirm("Do you wish to delete this item?")
-		? cfpData.pop(rowId)
-		: console.log("delete canceled");
-	console.log(cfpData);
-	// render table to show update
-	renderTable();
+function deleteRow() { // get the id of the row
+    const rowId = parseInt(this.parentNode.parentNode.id.split("row")[1]);
+    // remove the object from the array
+    confirm("Do you wish to delete this item?") ? cfpData.pop(rowId) : console.log("delete canceled");
+    console.log(cfpData);
+    // render table to show update
+    renderTable();
 }
 
 // create edit and delete buttons
 function creatActionBtns(text) {
-	const actionBtn = document.createElement("button");
-	actionBtn.textContent = text;
-	text == "Edit"
-		? actionBtn.addEventListener("click", editRow)
-		: actionBtn.addEventListener("click", deleteRow);
-	return actionBtn;
+    const actionBtn = document.createElement("button");
+    actionBtn.textContent = text;
+    text == "Edit" ? actionBtn.addEventListener("click", editRow) : actionBtn.addEventListener("click", deleteRow);
+    return actionBtn;
 }
-export {renderTable};
+// callback function for edit buttons listeners
+export function editComplete() {
+    const edit = document.getElementById("modal-dialog")
+    const household = document.getElementById("edit-household")
+    const homeSize = document.getElementById("edit-homesize")
+    if (this.id == "edit-done") {
+        const index = this.value
+		// creat new obj and replace obj at cfpData[index]
+        const obj = new cfpObjConstrutor(cfpData[index].firstName, cfpData[index].lastName, household.value, homeSize.value)
+        obj.index = index
+        cfpData[index] = obj
+        renderTable();
+        edit.style.display = "none"
+    } else {
+        edit.style.display = "none"
+        console.log("edit canceled")
+        return
+    }
+}
+

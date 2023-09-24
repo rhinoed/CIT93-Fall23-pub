@@ -172,4 +172,55 @@ function createRow(obj,cols) {
 ### Conclusion
 Adding modules initaly broke some of my for loops and at first I couldn't figure out why. I found that I had not used keywords for my variables in the loops. After adding them it my code worked. The functionality is nearly complete I just need to add the ablity for the user to provide input when editing the table. I thought about using prompts but, I might also try using a separate window to capture their input.
 
+### Update
+
+##### Feature
+Finished adding edit and delete functionality. I decided to use a modal type input dialog, which is a hidden html element that is made visable when the edit button is clicked. At first I added the eevent listners inside the `editRow()` function. But I ran into a bug in which all objects were replace instead of just the one I wanted. I still not sure what was causing the bug. But adding the event listeners in `main.js` with `addListner()`.
+
+##### Refactoring
+
+The `creatRow()` function has been removed. This function was largely if-else logic to determine which value of the object to set the `textContent` of the `td`. I have replaced it with an array of arrow functions which return the same values. One benefit of this is that I can iterate over the array in a loop cleaning up my code.
+
+New
+`renderTable()`
+
+```javascript
+export function renderTable() { // create reference to the table
+    const table = createTable();
+    const tblBody = table.children[1];
+    // this function array replaces the if else statement I had
+    const functionArray = [
+        (obj) => {return obj.user},
+        (obj) => {return obj.household},
+        (obj) => {return obj.homeSize},
+        (obj) => {return obj.cfpTotal()}
+    ];
+    const actionBtnText = ["Edit", "Delete"];
+
+    cfpData.forEach(function (obj) {
+        const tblRow = document.createElement("tr");
+        for (let func of functionArray) {
+            const tblData = document.createElement("td");
+            tblData.textContent = `${
+                func(obj)
+            }`;
+            tblRow.appendChild(tblData);
+        }
+        const tblData = document.createElement("td");
+		// create buttons
+        for (let text of actionBtnText) {
+            tblData.appendChild(creatActionBtns(text));
+        }
+		// row id userd for deletion
+        tblRow.setAttribute("id", `row${
+            obj.id
+        }`);
+        tblRow.appendChild(tblData);
+        tblBody.appendChild(tblRow);
+    });
+
+    table.appendChild(tblBody);
+    TBL.replaceChildren(table);
+}
+```
 

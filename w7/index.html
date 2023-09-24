@@ -41,7 +41,26 @@
             <button type="submit" id="submit" class="button disabled" disabled>Submit</button>
         </fieldset>
     </form>
-
+    <div class="modal" id="modal-dialog">
+        <form id="edit-form" class="edit-content">
+            <label for="edit-household">Edit number in household</label>
+            <input type="number" min="1" max="10" name="edit-household" id="edit-household" class="modal-userinput"
+                required>
+            <br>
+            <label for="edit-homesize">Edit home size</label>
+            <select id="edit-homesize" name="edit-homesize" class="modal-userinput" required>
+                <option value="">--Please select one--</option>
+                <option value="large">large</option>
+                <option value="medium">medium</option>
+                <option value="small">small</option>
+                <option value="apartment">aparment</option>
+            </select>
+        </form>
+        <div id="editButton-container" class="modal-edit-btns">
+            <button type="done" id="edit-cancel">Cancel</button>
+            <button type="done" id="edit-done">Done</button>
+        </div>
+    </div>
     <br>
     <h2 id="totalCF">Make selections to see how they effect your score</h2>
     <hr>
