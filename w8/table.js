@@ -97,7 +97,7 @@ async function editRow() {
 }
 
 async function asyncEditComplete(){
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         const modalEdit = document.getElementById("modal-dialog")
         modalEdit.style.display = "block"
         document.getElementById("edit-done").addEventListener("click", function(){
@@ -121,7 +121,7 @@ async function asyncEditComplete(){
    
 }
 async function confirmDeletion(){
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         const modalDel = document.getElementById("modal-delete")
         modalDel.style.display = "block"
         document.getElementById("confirm-del").addEventListener("click", function(){
