@@ -51,6 +51,48 @@ async function confirmDeletion(){
     })
 }
 ```
+#### How I Implemented Edit (Update)
+
+`editRow()` and `asyncEditComplete()`
+```javascript
+// edit button functionality
+async function editRow() {
+    const editForm = document.getElementById("edit-form")
+    //  set edit form input values to current td values
+    editForm.editfirstname.value = cfpData[this.value].firstName;
+    editForm.editlastname.value = cfpData[this.value].lastName;
+    editForm.edithousehold.value = cfpData[this.value].household;
+    editForm.edithomesize.value = cfpData[this.value].homeSize;
+    if (await asyncEditComplete()){
+        const firstName = document.getElementById("editfirstname");
+        const lastName = document.getElementById("editlastname");
+        const household = document.getElementById("edithousehold");
+        const homeSize = document.getElementById("edithomesize");
+        const obj = new cfpObjConstrutor( firstName.value,lastName.value,household.value,homeSize.value);
+        cfpData.splice(this.value,1,obj);
+        //cfpData[this.value] = obj;
+        renderTable();
+    }else{
+        console.log("edit canceled");
+    }
+}
+
+async function asyncEditComplete(){
+    return new Promise((resolve, reject) => {
+        const modalEdit = document.getElementById("modal-dialog")
+        modalEdit.style.display = "block"
+        document.getElementById("edit-done").addEventListener("click", function(){
+            modalEdit.style.display = "none"
+            resolve(true);
+
+        });
+        document.getElementById("edit-cancel").addEventListener("click", function(){
+            modalEdit.style.display = "none"
+            resolve(false);
+        });
+    })
+}
+```
 #### Claring TBL Header
 This how I cleared the table header. 
 ```javascript

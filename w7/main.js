@@ -5,8 +5,8 @@
 
 // top-level const
 
-import { renderTable,editComplete} from "./table.js"
-import { calculateCFHomeSizePts, calculateCFHouseholdPts } from "./calculate.js";
+import {renderTable, editComplete} from "./table.js"
+import {calculateCFHomeSizePts, calculateCFHouseholdPts} from "./calculate.js";
 
 
 const FORM = document.getElementById("form");
@@ -17,106 +17,78 @@ export const cfpData = [];
 // ###################	Event handler functions	###################
 // This updates the points the points shown next to the input boxes.
 function householdSelectorChanged() {
-	const householdPts = calculateCFHouseholdPts(parseInt(this.value));
-	console.log(
-		`based on your selection your household size points are ${householdPts}`
-	);
-	const ptsDisplay = document.querySelector("#householdPts");
-	ptsDisplay.textContent = householdPts != 0 ? `  ${householdPts} Pts added` : null;
-	toggleSubmitButton();
+    const householdPts = calculateCFHouseholdPts(parseInt(this.value));
+    console.log(`based on your selection your household size points are ${householdPts}`);
+    const ptsDisplay = document.querySelector("#householdPts");
+    ptsDisplay.textContent = householdPts != 0 ? `  ${householdPts} Pts added` : null;
+    toggleSubmitButton();
 }
 // changes the homeSize span text content
 function homeSizeSelectorChanged() {
-	const homeSizePts = calculateCFHomeSizePts(this.value);
-	console.log(
-		`based on your selection your home size points are ${homeSizePts}`
-	);
-	const ptsDisplay = document.querySelector("#homeSizePts");
-	ptsDisplay.textContent = homeSizePts != 0 ? `  ${homeSizePts} Pts added`: null;
-	toggleSubmitButton();
+    const homeSizePts = calculateCFHomeSizePts(this.value);
+    console.log(`based on your selection your home size points are ${homeSizePts}`);
+    const ptsDisplay = document.querySelector("#homeSizePts");
+    ptsDisplay.textContent = homeSizePts != 0 ? `  ${homeSizePts} Pts added` : null;
+    toggleSubmitButton();
 }
 
 // this function is called when the form is submitted
 function submit(event) {
-	event.preventDefault();
-	cfpData.push(
-		new cfpObjConstrutor(
-			this.firstname.value,
-			this.lastname.value,
-			this.household.value,
-			this.homesize.value
-		)
-	);
-	//displayOutput();
+    event.preventDefault();
+    cfpData.push(new cfpObjConstrutor(this.firstname.value, this.lastname.value, this.household.value, this.homesize.value));
+    // displayOutput();
     renderTable();
-	// reset form & points
-	this.reset();
-	toggleSubmitButton();
+    // reset form & points
+    this.reset();
+    toggleSubmitButton();
 }
 
 // ###################	DOM manipulation  ###################
 // this function enables and disables the submit button based on if the user has filled out all the fields
 function toggleSubmitButton() {
-	const totalCFHeading = document.querySelector("#totalCF");
-	const inputValues = [];
-	for (let element in USERINPUT) {
-		inputValues.push(element.value);
-	}
-	// check to see if inputValues contains empty strings
-	if (inputValues.includes("")) {
-		totalCFHeading.textContent = "All fields must be filled out to submit";
-		document.getElementById("submit").setAttribute("disabled", "disabled");
-		document.getElementById("submit").setAttribute("class", "button disabled");
-	} else {
-		document.getElementById("submit").removeAttribute("disabled");
-		document.getElementById("submit").setAttribute("class", "button");
-		totalCFHeading.textContent = "Click submit to see your results";
-	}
+    const totalCFHeading = document.querySelector("#totalCF");
+    const inputValues = [];
+    console.log[inputValues.length];
+    for (let element of USERINPUT) {
+        inputValues.push(element.value);
+    }
+    // check to see if inputValues contains empty strings
+    if (inputValues.includes("")) {
+        totalCFHeading.textContent = "All fields must be filled out to submit";
+        document.getElementById("submit").setAttribute("disabled", "disabled");
+        document.getElementById("submit").setAttribute("class", "button disabled");
+    } else {
+        document.getElementById("submit").removeAttribute("disabled");
+        document.getElementById("submit").setAttribute("class", "button");
+        totalCFHeading.textContent = "Click submit to see your results";
+    }
 }
 
 // ################### object constructor ###################
-export function cfpObjConstrutor(firstName, lastName, household, homeSize) {
-	// object properties
-	this.id = cfpData.length ;
-	this.firstName = firstName;
-	this.lastName = lastName
-	this.user = `${firstName} ${lastName}`;
-	this.household = parseInt(household);
-	this.homeSize = homeSize;
-	this.householdPts = calculateCFHouseholdPts(this.household);
-	this.homeSizePts = calculateCFHomeSizePts(this.homeSize);
+export function cfpObjConstrutor(firstName, lastName, household, homeSize) { // object properties
+    this.id = cfpData.length;
+    this.firstName = firstName;
+    this.lastName = lastName
+    this.user = `${firstName} ${lastName}`;
+    this.household = parseInt(household);
+    this.homeSize = homeSize;
+    this.householdPts = calculateCFHouseholdPts(this.household);
+    this.homeSizePts = calculateCFHomeSizePts(this.homeSize);
 
-	// object methods
-	this.cfpTotal = function () {
-		return this.householdPts + this.homeSizePts;
-	};
+    // object methods
+    this.cfpTotal = function () {
+        return this.householdPts + this.homeSizePts;
+    };
 }
 // ################### event listener function ###################
-function addListener(element, event, func) {
-	//create event listeners passing the functions which are executed when changes are made to these elements
-	element.addEventListener(event, func);
+function addListener(element, event, func) { // create event listeners passing the functions which are executed when changes are made to these elements
+    element.addEventListener(event, func);
 }
 
 // add event listeners
 addListener(document.getElementById("form"), "submit", submit);
-addListener(
-	document.querySelector("#household"),
-	"change",
-	householdSelectorChanged
-);
-addListener(
-	document.querySelector("#homesize"),
-	"change",
-	homeSizeSelectorChanged
-);
+addListener(document.querySelector("#household"), "change", householdSelectorChanged);
+addListener(document.querySelector("#homesize"), "change", homeSizeSelectorChanged);
 
-addListener(
-	document.getElementById("edit-cancel"),
-	"click",
-	editComplete
-)
-addListener(
-	document.getElementById("edit-done"),
-	"click",
-	editComplete
-)
+addListener(document.getElementById("edit-cancel"), "click", editComplete)
+addListener(document.getElementById("edit-done"), "click", editComplete)

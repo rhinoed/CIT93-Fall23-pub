@@ -47,7 +47,6 @@ export function renderTable() { // create reference to the table
         },
     ];
     const actionBtnText = ["Edit", "Delete"];
-
     cfpData.forEach(function (obj) {
         const tblRow = document.createElement("tr");
         for (let func of functionArray) {
