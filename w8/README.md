@@ -2,7 +2,7 @@
 # Week 8 U in CRUD amd TBL Heading
 
 #### Overview
-At the end of last week I had the edit and delete functioality work in my code. So in the terms of functioality nothing has changed but under the hood there are several changes.
+At the end of last week I had the edit and delete functioality working in my code. So in the terms of functioality nothing has changed but under the hood there are several changes.
 - implemented `splice()` method in both the edit and delete funtions
 - switched from `confirm()` method to a modal delete confirmation
 - use of async function in both the edit and deletion processes
@@ -93,10 +93,10 @@ async function asyncEditComplete(){
     })
 }
 ```
-#### Claring TBL Header
+#### Clearing TBL Header
 This how I cleared the table header. 
 ```javascript
  cfpData.length !== 0 ? renderTable() : TBL.replaceChildren("");
 ```
 #### Conclusion
-JavaScripts implementations of asyc funtions is very different from what I'm use to in Swift. So it was a challenge, but it should help me when we cover it in this class.
+JavaScripts implementations of asyc funtions is very different from what I'm use to in Swift. So it was a challenge, but starting to use it here should help me when we cover it.
