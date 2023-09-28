@@ -30,3 +30,7 @@ Forms and Data Validation [Name and Carbon Footprint Output](https://cit93.githu
 Working code:
 
 Tables and Modules [Table output](https://cit93.github.io/marke-pub/w7/)
+
+#### Week 8
+Working code:
+U In CRUD and TBL [Edit Working](https://cit93.github.io/marke-pub/w8/)
