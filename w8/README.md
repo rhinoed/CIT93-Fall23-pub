@@ -94,7 +94,7 @@ async function asyncEditComplete(){
 }
 ```
 #### Clearing TBL Header
-This how I cleared the table header. 
+This how I cleared the table header. I have used a ternary operator which evaluates if `cfpData` is not equal to zero. If it passes then `renderTable()`is called otherwise I replace all children of `TBL` with an empty string.
 ```javascript
  cfpData.length !== 0 ? renderTable() : TBL.replaceChildren("");
 ```
