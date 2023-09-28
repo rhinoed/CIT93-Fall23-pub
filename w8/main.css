@@ -104,13 +104,13 @@ tbody tr:nth-child(even){
     background-color: whitesmoke;
    
 }
-.edit-content{
+.edit-content, .del-content{
     background-color: dimgray;
     margin: 10px;
     padding: 10px;
     border-radius: 8px;
 }
-.modal-edit-btns{
+.modal-edit-btns, .del-content{
     text-align: center;
     padding: 10px;
 }
@@ -131,18 +131,18 @@ tbody tr:nth-child(even){
 .edit-content{
     text-align: center;
 }
-
-.edit-content button:nth-child(even){
-    background-color: #565454;
+.del-content button:nth-child(even) {
+    background-color: #4f4d4d;
 }
-.edit-content button:nth-child(even):hover {
+
+.del-content button:nth-child(even):hover {
     background-color: #4d4b4b;
 }
 
-.edit-content button:nth-child(odd){
+.del-content button:nth-child(odd){
     background-color: #aa1414;
 }
-.edit-content button:nth-child(odd):hover{
+.del-content button:nth-child(odd):hover{
     background-color: #9e1212;
 }
 
@@ -152,6 +152,11 @@ tbody tr:nth-child(even){
     font-size: 18pt;
 }
 #editheader{
+    text-align: center;
+    margin: 0%;
+    padding: 0%;
+}
+.modalheader{
     text-align: center;
     margin: 0%;
     padding: 0%;
