@@ -31,7 +31,7 @@ When the page loads the `display` of this element is set to `none`
     </div>
 ```
 #### Use of Async Funtions
-This was the bigest challenge this week. But worth the effort before my code relied on setting and reading of `html` element `value` attributtes But now I don't need them.
+This was the bigest challenge this week. But worth the effort before my code relied on setting and reading of `html` element `value` attributtes But now I only need to set the value attribute of the edit and delete buttons which I do in the function which creates them.
 
 `confirmDeletion()`
 ```javascript
