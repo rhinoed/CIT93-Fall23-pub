@@ -87,5 +87,6 @@ function addListener(element, event, func) { // create event listeners passing t
 addListener(document.getElementById("form"), "submit", submit);
 addListener(document.querySelector("#household"), "change", householdSelectorChanged);
 addListener(document.querySelector("#homesize"), "change", homeSizeSelectorChanged);
-
+addListener(document.getElementById("firstname"),"input",toggleSubmitButton);
+addListener(document.getElementById("lastname"),"input",toggleSubmitButton);
 

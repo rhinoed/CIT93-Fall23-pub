@@ -100,3 +100,13 @@ This is how I cleared the table header. I have used a ternary operator which eva
 ```
 #### Conclusion
 JavaScripts implementations of asyc funtions is very different from what I'm use to in Swift. So it was a challenge, but starting to use it here should help me when we cover it.
+
+#### Bugs
+
+Fixed these bugs:
+
+- [x] Issue with modal edit form not providing validation
+
+- [x] Unexpected output when deleting while modal window is diplayed
+
+- [x] Issue with form submit button being disabled when all fields were filled

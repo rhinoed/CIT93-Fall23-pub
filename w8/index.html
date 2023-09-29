@@ -46,10 +46,10 @@
         <form id="edit-form" class="edit-content">
             <fieldset id="edit-categories">
             <label for="editfirstname">First Name</label>
-            <input id="editfirstname" name="edit-firstanme" type="text" class="modal-userinput">
+            <input id="editfirstname" name="edit-firstanme" type="text" class="modal-userinput" required>
             <br>
             <label for="editlastname">Last Name</label>
-            <input id="editlastname" name="edit-lastanme" type="text" class="modal-userinput">
+            <input id="editlastname" name="edit-lastanme" type="text" class="modal-userinput" required>
             <br>
             <label for="edithousehold">Number in household</label>
             <input type="number" min="1" max="10" name="edit-household" id="edithousehold" class="modal-userinput"
@@ -63,12 +63,12 @@
                 <option value="small">small</option>
                 <option value="apartment">aparment</option>
             </select>
-           
-            </fieldset>
             <div id="editButton-container" class="modal-edit-btns">
                 <button type="button" id="edit-cancel" >Cancel</button>
-                <button type="button" id="edit-done">Done</button>
+                <button type="submit" id="edit-done">Done</button>
             </div>
+            </fieldset>
+            
         </form>
     </div>
     <div id="modal-delete" class="modal">
