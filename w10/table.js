@@ -113,7 +113,7 @@ const creatActionBtns = (text, index) => {
 }
 
 const editComplete = () => {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
         const modalEdit = document.getElementById("modal-dialog");
         const form = document.getElementsByClassName("userinput");
         const actionBtns = document.getElementsByClassName("actionBtns");

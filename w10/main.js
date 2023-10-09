@@ -111,7 +111,7 @@ export const cfpObjConstrutor = function(...params){ // object properties
     this.householdPts = calculateCFHouseholdPts(this.household);
     this.homeSizePts = calculateCFHomeSizePts(this.homeSize);
     this.cfpTotal = this.householdPts + this.homeSizePts
-   
+
 }
 // ################### event listener function ###################
  const addListener = (element, event, func) => { // create event listeners passing the functions which are executed when changes are made to these elements

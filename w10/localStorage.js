@@ -1,6 +1,6 @@
 // LocalStorage functions
 
-export const saveToLS = (cfpData) => {
+export const saveToLS = cfpData => {
     localStorage.setItem("cfp",JSON.stringify(cfpData))
 }
 
