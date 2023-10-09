@@ -67,7 +67,7 @@ export const calculateCFHomeSizePts = (sizeOfHome = "small") => {
 }
 ```
 #### REST Operator
-I decided that in my code the `cfpObjectConstrutor()` mande the most sense to use the rest operator on for this assignment. It is not something that I am likly to keep in the code.
+I decided that in my code the `cfpObjectConstrutor()` made the most sense to use the rest operator on for this assignment. It is not something that I am likely to keep in the code.
 
 ```js
 export const cfpObjConstrutor = function(...params){ // object properties
@@ -85,4 +85,4 @@ export const cfpObjConstrutor = function(...params){ // object properties
 ```
 
 #### Conclusion
-For the most part this challenge was strait forward. I was already aware that arrow functions don't have bindings to `this` so I did not waste any time trying to figure out the errors converting those functions would have caused. The use of default values is familar to me from the Swift programming language. The rest operator I can see being useful when the number of arguments are unknown or might change but in our code it is not very useful.
+For the most part this challenge was strait forward. I was already aware that arrow functions don't have bindings to `this` so I did not waste any time trying to figure out the errors converting those functions would have caused. The use of default values is familiar to me from the Swift programming language. The rest operator I can see being useful when the number of arguments are unknown or might change but in our code it is not very useful.

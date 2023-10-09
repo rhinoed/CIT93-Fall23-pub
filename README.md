@@ -37,3 +37,6 @@ U In CRUD and TBL [Edit Working](https://cit93.github.io/marke-pub/w8/)
 
 #### Week 9
 Global JS and Form Validation [ChatGPT code implementation](https://cit93.github.io/marke-pub/w9/)
+
+#### Week 10
+Updating Functions [Aroow functions, Default values, rest operator](https://cit93.github.io/marke-pub/w10/)
