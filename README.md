@@ -40,3 +40,7 @@ Global JS and Form Validation [ChatGPT code implementation](https://cit93.github
 
 #### Week 10
 Updating Functions [Aroow functions, Default values, rest operator](https://cit93.github.io/marke-pub/w10/)
+
+#### Week 11
+Object Oriented Programming [Classes and Methods](https://cit93.github.io/marke-pub/w11/)
+
