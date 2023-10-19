@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 11 - Carbon Footprint </title>
+    <script type="module" src="main.js"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body id = "body">
+    <h1>Calculate Your Carbon Footprint</h1>
+    <form id="form">
+        <fieldset id="categories">
+            <legend>Input Your Data</legend>
+            <div>
+                <label for="firstname">First Name</label>
+                <input type="text" name="firstname" id="firstname" maxlength="20" class="userinput"><span id="firstname-error" class="form-error"></span>
+            </div>
+            <div>
+                <label for="lastname">Last Name</label>
+                <input type="text" name="lastname" id="lastname" maxlength="20" class="userinput"><span id="lastname-error" class="form-error" ></span>
+            </div>
+            <div>
+                <label for="household">Number of people in your household </label>
+                <input type="number" min="1" max="10" name="household" id="household" class="userinput" required>
+                <span id="householdPts"></span><span id="household-error" class="form-error"></span>
+            </div>
+            <div>
+                <label for="homesize">Size of your home</label>
+                <select id="homesize" name="homesize" class="userinput" required>
+                    <option value="">--Please select one--</option>
+                    <option value="large">large</option>
+                    <option value="medium">medium</option>
+                    <option value="small">small</option>
+                    <option value="apartment">aparment</option>
+                </select>
+                <span id="homeSizePts"></span><span id="homesize-error" class="form-error"></span>
+            </div>
+            <div>
+                <label for="foodchoice">Food Choices</label>
+                <select id="foodchoice" name="foodchoice" class="userinput" required>
+                    <option value="">-- Please select one --</option>
+                    <option value="carnivour">Eat meat daily</option>
+                    <option value="omnivour">Eat meat a few times / week</option>
+                    <option value="vegitarian">I'm a vegitarian</option>
+                    <option value="vegan">I'm a vegan</option>
+                </select>
+                <br>        
+                    <input type="radio" id="foodmix1" value="prepackaged" name="food_source" focus="true" checked>
+                    <label for="foodmix1">Prepackaged / Conveinence</label>
+                    <br>
+                    <input type="radio" id="foodmix2" value="fresh" name="food_source">
+                    <label for="foodmix2"> Fresh / Prepackaged</label>
+                    <br>
+                    <input type="radio" id="foodmix3" value="wild" name="food_source">
+                    <label for="foodmix3">Wild / Local</label>
+            </div>
+            <button type="submit" id="submit" class="button disabled" disabled>Submit</button>
+        </fieldset>
+    </form>
+    
+    <div class="modal" id="modal-dialog">
+        <p id="editheader">Edit Row</p>
+        <form id="edit-form" class="edit-content">
+            <fieldset id="edit-categories">
+            <label for="editfirstname">First Name</label>
+            <input id="editfirstname" name="edit-firstanme" type="text" class="modal-userinput" required>
+            <br>
+            <label for="editlastname">Last Name</label>
+            <input id="editlastname" name="edit-lastanme" type="text" class="modal-userinput" required>
+            <br>
+            <label for="edithousehold">Number in household</label>
+            <input type="number" min="1" max="10" name="edit-household" id="edithousehold" class="modal-userinput"
+                required>
+            <br>
+            <label for="edithomesize">Home size</label>
+            <select id="edithomesize" name="edit-homesize" class="modal-userinput" required>
+                <option value="">--Please select one--</option>
+                <option value="large">large</option>
+                <option value="medium">medium</option>
+                <option value="small">small</option>
+                <option value="apartment">aparment</option>
+            </select>
+            <div>
+                <label for="editfoodchoice">Food Choices</label>
+                <select id="editfoodchoice" name="editfoodchoice" class="modal-userinput" required>
+                    <option value="">-- Please select one --</option>
+                    <option value="carnivour">carnivour</option>
+                    <option value="omnivour">omnivour</option>
+                    <option value="vegitarian">vegitarian</option>
+                    <option value="vegan">vegan</option>
+                </select>
+                <br>        
+                    <input type="radio" id="editfoodmix1" value="prepackaged" name="edit_food_source" focus="true" class="editradio" checked>
+                    <label for="editfoodmix1">Prepackaged / Conveinence</label>
+                    <br>
+                    <input type="radio" id="editfoodmix2" value="fresh" name="edit_food_source" class="editradio">
+                    <label for="editfoodmix2" class="editradio"> Fresh / Prepackaged</label>
+                    <br>
+                    <input type="radio" id="editfoodmix3" value="wild" name="edit_food_source" class="editradio">
+                    <label for="editfoodmix3"class="ediradio">Wild / Local</label>
+            </div>
+            <div id="editButton-container" class="modal-edit-btns">
+                <button type="button" id="edit-cancel" >Cancel</button>
+                <button type="submit" id="edit-done">Done</button>
+            </div>
+            </fieldset>
+            
+        </form>
+    </div>
+    <div id="modal-delete" class="modal">
+        <p class="modalheader" id="modaldelete">Delete</p>
+        <div class="del-content">
+            <p>Do you want to delete the row?</p>
+            <button type="button" id="cancel-del" value="false" class="modal-del-btns">Cancel</button>
+            <button type="button" id="confirm-del" value="true" class="modal-del-btns">Yes</button>
+        </div>
+    </div>
+    <h2 id="totalCF" style="display: none;">Make selections to see how they effect your score</h2>
+    <hr>
+    <h3 style="text-align: center;">Results</h3>
+    <div id="output"></div>
+    <div id="tab-data"></div>
+</body>
+
+</html>
