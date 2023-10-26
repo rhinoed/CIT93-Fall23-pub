@@ -44,3 +44,6 @@ Updating Functions [Aroow functions, Default values, rest operator](https://cit9
 #### Week 11
 Object Oriented Programming [Classes and Methods](https://cit93.github.io/marke-pub/w11/)
 
+#### Week 12
+Async Code [Async Workout](https://cit93.github.io/marke-pub/w12/)
+
