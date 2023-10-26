@@ -21,7 +21,7 @@ const  beginWorkout = (form,callback) =>{
     newP.textContent = `${form.workout.value} workout with ${form.reps.value} ${getPhrase(form.reps.value)} has started`
     OUTPUT.appendChild(newP);
     // Async code
-    const counter = setInterval(countReps,duration/parseInt(form.reps.value))
+    const counter = setInterval(countReps,duration/parseInt(form.reps.value) + .01) 
     setTimeout(()=>{
         callback(form);
         // stops the calls to countReps
@@ -30,3 +30,8 @@ const  beginWorkout = (form,callback) =>{
 }
 ```
 I also added some CSS. It is basicly what I used for the Carbon Footprint.
+
+#### Bugs 
+- [x] Issue in Safari where rep count did display the final count before the stop workout header appeared
+    - This did not occur during testing using Chrome. Could be caused by `setTimeout` finishing before `setInterval`. That would clear the interval call to `countReps`. Adding some time to the denomiator of `duration/parseInt(form.reps.value)`  could provide a quick fix
+    - confirmed adding time fixes the issue

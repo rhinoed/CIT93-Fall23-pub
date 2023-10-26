@@ -30,14 +30,14 @@ const  beginWorkout = (form,callback) =>{
     newP.textContent = `${form.workout.value} workout with ${form.reps.value} ${getPhrase(form.reps.value)} has started`
     OUTPUT.appendChild(newP);
     // Async code
-    const counter = setInterval(countReps,duration/parseInt(form.reps.value))
+    const counter = setInterval(countReps,duration/(parseInt(form.reps.value) + .01))
     setTimeout(()=>{
-        callback(form);
         clearInterval(counter);
+        callback(form);
     },duration)
 
 }
 document.getElementById("form").addEventListener("submit", function(event){
-    event.preventDefault();
     beginWorkout(this,workoutComplete);
+    event.preventDefault();
 })
