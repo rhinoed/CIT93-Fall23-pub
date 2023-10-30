@@ -24,20 +24,25 @@ const countReps= ()=> {
 
 }
 // Call by event listener
-const  beginWorkout = (form,callback) =>{
+const  beginWorkout = (form) =>{
     const newP = document.createElement("h2");
     const duration = parseInt(form.time.value) * 1000;
     newP.textContent = `${form.workout.value} workout with ${form.reps.value} ${getPhrase(form.reps.value)} has started`
     OUTPUT.appendChild(newP);
     // Async code
     const counter = setInterval(countReps,duration/(parseInt(form.reps.value) + .01))
-    setTimeout(()=>{
-        clearInterval(counter);
-        callback(form);
-    },duration)
+    return new Promise((resovle)=>{
+        setTimeout(()=>{
+            clearInterval(counter);
+            resovle(form);
+        },duration)
+    })
+   
 
 }
 document.getElementById("form").addEventListener("submit", function(event){
-    beginWorkout(this,workoutComplete);
+    //beginWorkout(this,workoutComplete);
     event.preventDefault();
+    beginWorkout(this)
+        .then(workoutComplete)
 })
