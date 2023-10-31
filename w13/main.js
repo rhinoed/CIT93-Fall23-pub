@@ -5,44 +5,64 @@
 const OUTPUT = document.getElementById("output");
 let count = 0;
 // Returns the correct form of rep(s) based on count
-const getPhrase = (count) =>{
-    return  phrase = count == 1 ? "rep": "reps";
+const getPhrase = (count) => {
+    return phrase = count == 1 ? "rep" : "reps";
 }
 // Callback function
-const workoutComplete = (form) =>{
-    const newP = document.createElement("h2");
-    newP.textContent = `${form.workout.value} workout stoped. You completed ${form.reps.value} ${getPhrase(parseInt(form.reps.value))}`;
-    OUTPUT.appendChild(newP);
+const workoutComplete = (form) => {
+    message = `${form.workout.value} workout stoped. You completed ${form.reps.value} ${getPhrase(parseInt(form.reps.value))}`;
+    displayOut(message);
     count = 0;
+    form.reset();
 }
 //Displays the rep count
-const countReps= ()=> {
-    const newP = document.createElement("p");
+const countReps = () => {
     count += 1
+    const newP = document.createElement("p");
     newP.textContent = `${count} ${getPhrase(count)}`;
     OUTPUT.appendChild(newP);
+    newP.addEventListener("click", () => {
+        count += 1
+    })
+
+}
+// Outputs workout star / stop messages
+function displayOut(message) {
+    const newP = document.createElement("h2");
+    newP.textContent = message
+    OUTPUT.appendChild(newP);
+}
+
+function onError(error) {
+    displayOut(`Error: ${error}`);
+    console.log(`Error: ${error}`);
+    count = 0
 
 }
 // Call by event listener
-const  beginWorkout = (form) =>{
-    const newP = document.createElement("h2");
+const beginWorkout = (form) => {
     const duration = parseInt(form.time.value) * 1000;
-    newP.textContent = `${form.workout.value} workout with ${form.reps.value} ${getPhrase(form.reps.value)} has started`
-    OUTPUT.appendChild(newP);
+    const message = `${form.workout.value} workout with ${form.reps.value} ${getPhrase(form.reps.value)} has started`;
+    displayOut(message);
     // Async code
-    const counter = setInterval(countReps,duration/(parseInt(form.reps.value) + .01))
-    return new Promise((resovle)=>{
-        setTimeout(()=>{
+    return new Promise((resovle, reject) => {
+        const counter = setInterval(countReps, duration / (parseInt(form.reps.value) + .001));
+        setTimeout(() => {
+            if (count != parseInt(form.reps.value)) {
+                reject(`count error you counted ${count} and you completed ${form.reps.value} ${form.workout.value}`);
+            } else {
+                resovle(form);
+            }
             clearInterval(counter);
-            resovle(form);
-        },duration)
+        }, duration)
     })
-   
-
 }
-document.getElementById("form").addEventListener("submit", function(event){
-    //beginWorkout(this,workoutComplete);
+
+document.getElementById("form").addEventListener("submit", function (event) {
+    OUTPUT.replaceChildren("");
     event.preventDefault();
     beginWorkout(this)
         .then(workoutComplete)
+        .catch(onError)
+
 })
