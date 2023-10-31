@@ -47,3 +47,5 @@ Object Oriented Programming [Classes and Methods](https://cit93.github.io/marke-
 #### Week 12
 Async Code [Async Workout](https://cit93.github.io/marke-pub/w12/)
 
+#### Week 13
+Async Code [Async Workout - Promises](https://cit93.github.io/marke-pub/w13/)
