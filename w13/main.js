@@ -8,22 +8,28 @@ let count = 0;
 const getPhrase = (count) => {
     return phrase = count == 1 ? "rep" : "reps";
 }
+
+const incrementCount = ()=>{
+    count += 1
+}
 // Callback function
 const workoutComplete = (form) => {
     message = `${form.workout.value} workout stoped. You completed ${form.reps.value} ${getPhrase(parseInt(form.reps.value))}`;
     displayOut(message);
     count = 0;
+    reps = document.getElementsByTagName("p");
+    for (let element of reps){
+        element.removeEventListener("click",incrementCount);
+    }
     form.reset();
 }
 //Displays the rep count
 const countReps = () => {
-    count += 1
+    incrementCount();
     const newP = document.createElement("p");
     newP.textContent = `${count} ${getPhrase(count)}`;
     OUTPUT.appendChild(newP);
-    newP.addEventListener("click", () => {
-        count += 1
-    })
+    newP.addEventListener("click", incrementCount);
 
 }
 // Outputs workout star / stop messages
