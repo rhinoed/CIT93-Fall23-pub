@@ -43,3 +43,9 @@ document.getElementById("form").addEventListener("submit", function(event){
         .catch(onError)
 }) 
 ```
+The catch block can also be triggered by a bug I identified in my code last week.
+###### Bug 
+- [x] Issue in Safari where rep count did display the final count before the stop workout header appeared
+    - This did not occur during testing using Chrome. Could be caused by `setTimeout` finishing before `setInterval`. That would clear the interval call to `countReps`. Adding some time to the denomiator of `duration/parseInt(form.reps.value)`  could provide a quick fix
+    
+By reducing the amount of time added to the doenominator the catch block can sometimes be triggered. I have only seen this bug effect Safari and Firefoxm in my testing. Chrome and Opera don't seem to have the issue, but my testing has not been exhaustive.

@@ -46,11 +46,13 @@ const beginWorkout = (form) => {
     displayOut(message);
     // Async code
     return new Promise((resovle, reject) => {
-        const counter = setInterval(countReps, duration / (parseInt(form.reps.value) + .001));
+        const counter = setInterval(countReps, duration / (parseInt(form.reps.value) + .006));
         setTimeout(() => {
-            if (count != parseInt(form.reps.value)) {
+            if (count > parseInt(form.reps.value)) {
                 reject(`count error you counted ${count} and you completed ${form.reps.value} ${form.workout.value}`);
-            } else {
+            } else if (count < parseInt(form.reps.value)) {
+                reject(`You did not complete ${form.reps.value} ${form.workout.value} you did ${count}`)
+            }else{
                 resovle(form);
             }
             clearInterval(counter);
