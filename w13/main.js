@@ -8,7 +8,7 @@ let count = 0;
 const getPhrase = (count) => {
     return phrase = count == 1 ? "rep" : "reps";
 }
-
+// increment global count
 const incrementCount = ()=>{
     count += 1
 }
