@@ -10,7 +10,7 @@ async function getData(album=1){
         if (data.status === 200){
             onSuccess(await data.json());
         }else{
-             throw new Error("Status Code != 200");
+            throw new Error(`Status Code != 200 server returned ${data.status}`);
         }
     }catch(error){
         onFailure(error);
@@ -36,7 +36,7 @@ function onSuccess(data){
 }
 
 function onFailure(error){
-    console.log(`Error: ${error}`)
+    console.log(error)
 }
 ALBUM.addEventListener("change",function(){
     getData(parseInt(this.value));
