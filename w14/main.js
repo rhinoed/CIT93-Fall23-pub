@@ -18,11 +18,10 @@ async function getData(album=1){
 }
 
 function onSuccess(data){
-    console.log(data)
     const outterContainer = document.createElement("div");
     data.forEach((obj)=>{
-        const innerContainer = document.createElement("h6");
-        const title = document.createElement("div");
+        const innerContainer = document.createElement("p");
+        const title = document.createElement("h6");
         const image = document.createElement("img");
         image.setAttribute("src", obj.thumbnailUrl);
         innerContainer.appendChild(image);
