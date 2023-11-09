@@ -49,3 +49,6 @@ Async Code [Async Workout](https://cit93.github.io/marke-pub/w12/)
 
 #### Week 13
 Async Code [Async Workout - Promises](https://cit93.github.io/marke-pub/w13/)
+
+#### Week 14
+Async Code [Async/Await using a api](https://cit93.github.io/marke-pub/w14/)
