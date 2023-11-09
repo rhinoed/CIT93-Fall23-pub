@@ -1,7 +1,26 @@
-- [x] Create a new w14 in your pub repo, no need to copy anything from w14 pri, then setup the normal files
-- [] COMMIT MESSAGE - "w14 ready"
-- [] Write async/await code to fetch an endpoints from https://jsonplaceholder.typicode.com/ Links to an external site.
-- [] Write code that renders the data to the page, I'll show you most of my output. 
-- [] Make sure you handle data and server error with try/catch, you can create an data error by trying to make a call to an endpoint that does not exist. 
-- [] Once you have attempted this challenge use COMMIT MESSAGE - "w14 my attempt at the code, before I review other students or solution code".
+
+# Overview 
+I chose to use the endpoint `ttps://jsonplaceholder.typicode.com/albums/<albume>/photos`.
+Where `<album>` is the value selected from the user input. I also added the album title under the image. In the error checking I created a custom error if the status code does not equal 200. Using the keyword `throw` this will trigger the catch block with the custom error message.
+
+My `getData()` function:
+```js
+async function getData(album=1){
+    const endPoint = `https://jsonplaceholder.typicode.com/albums/${album}/photos/`
+    try{
+        const data = await fetch(endPoint);
+        if (data.status === 200){
+            onSuccess(await data.json());
+        }else{
+             throw new Error("Status Code != 200");
+        }
+    }catch(error){
+        onFailure(error);
+    }
+}
+```
+
+
+
+
 

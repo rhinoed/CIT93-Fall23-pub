@@ -1,0 +1,10 @@
+html{
+    background-color: rgba(0, 0, 0, 0.679);
+}
+h6, label{
+    color: whitesmoke;
+}
+div{
+    grid-template-columns: auto auto auto auto;
+    display: grid;
+}
