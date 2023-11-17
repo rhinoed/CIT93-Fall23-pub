@@ -2,7 +2,7 @@
 import { cfpData, TBL } from "./global.js";
 import { saveToLS } from "./localStorage.js";
 import { Footprint } from "./Footprint.js";
-import { calculateAverage } from "./calculate.js";
+import { calculateAverageCF } from "./calculate.js";
 // creates basic table elements
 const createTable = () => {
     const theadLabels = [
