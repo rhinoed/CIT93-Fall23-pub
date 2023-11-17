@@ -53,7 +53,7 @@ const insertRow = function (){
     const labelCell = newRow.insertCell(0);
     labelCell.setAttribute("colspan","4");
     const valueCell = newRow.insertCell(-1);
-    const labelText = document.createTextNode("Average");
+    const labelText = document.createTextNode("Average Footprint Score");
     const valueText = document.createTextNode(Math.floor(average));
     labelCell.appendChild(labelText);
     valueCell.appendChild(valueText)
