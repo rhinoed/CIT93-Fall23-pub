@@ -55,3 +55,6 @@ Async Code [Async/Await using a api](https://cit93.github.io/marke-pub/w14/)
 
 #### Week 15
 Higher Order Funtions [Carbon Footprint Average](https://cit93.github.io/marke-pub/w15/)
+
+#### Week 16
+Code for Week 16 [Carbon Footprint Water and Purchases](https://cit93.github.io/marke-pub/w16/)
