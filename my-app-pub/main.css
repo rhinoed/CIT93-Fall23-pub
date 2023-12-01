@@ -1,0 +1,75 @@
+form,
+fieldset {
+    background-color: dimgray;
+    color: whitesmoke;
+    padding: 10pt;
+    border-radius: 25px;
+}
+fieldset, label, input, select,span{
+    vertical-align: middle;
+    margin: 0px;
+    border: none;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 5px;
+}
+tbody tr:nth-child(even){
+    background-color: grey;
+}
+input:in-range{
+    color: black;
+}
+input:out-of-range{
+    color: red;
+}
+.form-error{
+    font-size: 12pt;
+    color: red;
+}
+
+button{
+    margin: 5px 0px 5px 0px;
+    background-color: #3d9f41;
+    font-size: 12px;
+    color: whitesmoke;
+    padding: 12px 28px;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+    
+}
+button:hover{
+    background-color: #27892a; /* Green */
+    color: white;
+}
+
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+table{
+        margin-top: 10px;
+        padding: 10px;
+        width: 100%;
+        color: whitesmoke;
+        font-size: 18pt;
+        text-align: center;
+        background-color: dimgray;
+        border-radius: 8px;
+}
+th{
+    align-items: center;
+}
+.error-message {
+    font-size: small;
+    color: red;
+}
+ul{
+    list-style-type:  none;
+    text-align: left;
+}
+#schedule-view{
+    display: none;
+}

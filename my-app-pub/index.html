@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snooze Fest</title>
+    <script type="module" src="main.js"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <form id="form">
+        <fieldset>
+            <legend>Snooze Fest</legend>
+            <section id="setalarm" class="grouping">
+                <div>
+                    <label for="alarmname">Name for Alarm</label>
+                    <input type="text" id="alarmname" name="alarmname" class="userinput">
+                    <div>
+                        <label for="schedule">Schedule</label>
+                        <select id="schedule" name="schedule">
+                            <option value="">-- Please Select --</option>
+                        </select>
+                        <button type="button" id="edit-schedule" class="schedule-btn">Edit</button>
+                        <button type="button" id="new-schedule" class="schedule-btn">New</button>
+                        <button type="button" id="del-schedule" class="schedule-btn">Delete</button>
+                        <div id="schedule-view">
+                        <label for="schname">Schedule Name</label>
+                        <input type="text" id="schname">  
+                        <label for="time">Time</label>
+                        <input type="time" id="time" class="new-sch">
+                        <div id="day-select">
+                            <label for="sunday">Sunday</label>
+                            <input type="checkbox" class="new-sch" id="sunday" value="0">
+                            <label for="monday">Monday</label>
+                            <input type="checkbox" class="new-sch" id="monday" value="1">
+                            <label for="tuesday">Tuesday</label>
+                            <input type="checkbox" class="new-sch" id="tuesday" value="2">
+                            <label for="wednesday">Wednesday</label>
+                            <input type="checkbox" class="new-sch" id="wednesday" value="3">
+                            <label for="thursday">Thursday</label>
+                            <input type="checkbox" class="new-sch" id="thursday" value="4">
+                            <label for="friday">Friday</label>
+                            <input type="checkbox" class="new-sch" id="friday" value="5">
+                            <label for="saturday">Saturday</label>
+                            <input type="checkbox" class="new-sch" id="saturday" value="6">
+                        </div>
+                        <button type="button" id="done" >Done</button>
+                        <button type="button" id="cancel" >Cancel</button>
+                        </div>
+                        
+                        </div>
+                    
+                </div>
+                <div>
+                    <label for="alarmtime">Set Alarm for</label>
+                    <input type="datetime-local" id="alarmtime" name="alarmtime" class="userinput" value="" required>
+                    <lable id="alarm-on" name="alarm-state">On</lable>
+                    <input type="radio" id="alarm-on" name="alarm_state" value="true">
+                    <lable id="alarm-off" name="alarm-state">Off</lable>
+                    <input type="radio" id="alarm-off" name="alarm_state" value="false" checked>
+                    <p id="error" class="error-message"></p>
+                </div>
+                <div>
+                    <label for="snoozetime">Set Snooze</label>
+                    <input type="number" id="snoozetime" name="snoozetime" class="userinput" min="0" max="30" step="5"
+                        value="10" required>
+                </div>
+            </section>
+            <button type="submit" id="submit" class="button disabled" disabled>Check Alarm</button>
+        </fieldset>
+
+    </form>
+    <div id="output"></div>
+    <div id="tab-data"></div>
+        
+</body>
+
+</html>
