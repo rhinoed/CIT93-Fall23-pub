@@ -1,0 +1,193 @@
+/*
+CSS for Carbon Foottprint index page
+*/
+
+html {
+    font-size: 18pt;
+}
+
+body {
+    color: whitesmoke;
+    background-color: #0000006c
+}
+
+ul {
+    font-size: 16pt;
+    font-weight: bold;
+    list-style-type: none;
+    padding: 5px;
+    background-color: dimgrey;
+    color: whitesmoke;
+    text-align: center;
+    border-radius: 25px;
+}
+
+form,
+fieldset {
+    background-color: dimgray;
+    color: whitesmoke;
+    padding: 10pt;
+    border-radius: 25px;
+}
+fieldset, label, input, select,span{
+    vertical-align: middle;
+    margin: 0px;
+    border: none;
+    border-radius: 8px;
+    padding: 5px;
+}
+input:in-range{
+    color: black;
+}
+input:out-of-range{
+    color: red;
+}
+.form-error{
+    font-size: 12pt;
+    color: red;
+}
+
+button{
+    margin: 5px 0px 5px 0px;
+    background-color: #3d9f41;
+    font-size: 16px;
+    color: whitesmoke;
+    padding: 12px 28px;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+    
+}
+button:hover{
+    background-color: #27892a; /* Green */
+    color: white;
+}
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+table{
+    
+    padding: 10px;
+    width: 100%;
+    color: whitesmoke;
+    font-size: 18pt;
+    text-align: center;
+    background-color: dimgray;
+    border-radius: 8px;
+}
+
+tr td :nth-child(even){
+    background-color: rgb(179, 16, 16);
+    border-radius: 8px;
+   
+}
+tr td :nth-child(even):hover{
+    background-color: #a21010;
+    color: white;
+}
+thead tr th{
+    border-radius: 8px;
+    background-color: black;
+}
+tbody tr:nth-child(even){
+    background-color: rgba(60, 57, 57, 0.301);
+    
+}
+.modal{
+    display: none;
+    position: fixed;
+    padding: 20px;
+    top: 20%;
+    left: 33%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.707);
+    border-radius: 12px;
+}
+.modal-userinput{
+    background-color: whitesmoke;
+   
+}
+.edit-content, .del-content{
+    background-color: dimgray;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+}
+.modal-edit-btns, .del-content{
+    text-align: center;
+    padding: 10px;
+}
+ .modal-edit-btns button:nth-child(odd){
+
+    background-color: #565454;
+
+}
+ .modal-edit-btns button:nth-child(odd):hover{
+    color: rgb(252, 251, 251);
+    background-color: #4d4949;
+
+}
+.modal-del-btns{
+    text-align: center;
+    padding: 10px;
+}
+.edit-content{
+    text-align: center;
+}
+.del-content button:nth-child(even) {
+    background-color: #4f4d4d;
+}
+
+.del-content button:nth-child(even):hover {
+    background-color: #4d4b4b;
+}
+
+.del-content button:nth-child(odd){
+    background-color: #aa1414;
+}
+.del-content button:nth-child(odd):hover{
+    background-color: #9e1212;
+}
+
+  .modal{   
+    text-align: left;
+    align-items: center;
+    font-size: 18pt;
+}
+#editheader{
+    text-align: center;
+    margin: 0%;
+    padding: 0%;
+}
+.modalheader{
+    text-align: center;
+    margin: 0%;
+    padding: 0%;
+}
+.foodchoice, .wateruse, .recycle, .modal-recycle {
+    grid-template-columns: auto auto;
+    display: grid;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: #5a575758;
+}
+.transportation{
+    grid-template-columns: auto auto auto;
+    display: grid;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: #5a575758;
+}
+
+
+.control{
+    text-align: center;
+}
