@@ -58,3 +58,6 @@ Higher Order Funtions [Carbon Footprint Average](https://cit93.github.io/marke-p
 
 #### Week 16
 Code for Week 16 [Carbon Footprint Water and Purchases](https://cit93.github.io/marke-pub/w16/)
+
+#### Week 17
+Code for Week [Carbon Footprint Transportation](https://cit93.github.io/marke-pub/w17/)
