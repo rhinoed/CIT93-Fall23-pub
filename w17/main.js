@@ -76,7 +76,7 @@ const submit = function (event) {
             parseInt(evnT.runs.value),
 			parseInt(evnT.purchases.value),
 			parseInt(evnT.garbage.value),
-			Array.from(document.getElementsByClassName("recyclable")).map(input=> input.checked),
+			Array.from(document.getElementsByClassName("recyclable")).map(input => input.checked),
 			getTrasportationValues(event)
 		)
 		cfpData.push(fpObj)
