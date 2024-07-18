@@ -35,7 +35,7 @@ const fpObj = new Footprint(
 			evnT.homesize.value,
 			evnT.foodchoice.value,
 			evnT.food_source.value,
-            evnT.appliances.checked,
+			evnT.appliances.checked,
 			parseInt(evnT.runs.value),
 			parseInt(evnT.purchases.value),
 			parseInt(evnT.garbage.value),
